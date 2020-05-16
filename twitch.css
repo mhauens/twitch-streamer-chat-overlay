@@ -17,6 +17,11 @@
     width: 100vw;
 }
 
+.mention-fragment,
+.mention-fragment.mention-fragment--recipient {
+    background-color: #222;
+}
+
 div[data-a-target="chat-line-message"] {
     cursor: pointer;
 }
