@@ -54,11 +54,28 @@ window.addEventListener("load", function () {
                         "click",
                         "[data-a-target='chat-line-message']",
                         function () {
-                            $(".hl-c-cont").remove();
+                            $(".hl-c-cont").remove(); /* remove old insert */
+
                             var chatName = $(this)
                                 .find("[data-a-target='chat-message-username']")
                                 .text();
                             chatName = chatName.replace(/ .*/, "");
+
+                            var chatBadgeList = $(this).find(
+                                "[data-a-target='chat-badge']"
+                            );
+
+                            var chatBadges = "";
+
+                            var getChatBadges = () => {
+                                chatBadgeList.each((i) => {
+                                    chatBadges = chatBadges.concat(
+                                        chatBadgeList[i].innerHTML
+                                    );
+                                });
+                            };
+
+                            getChatBadges();
 
                             $(this).addClass("msg-shown");
 
@@ -124,6 +141,7 @@ window.addEventListener("load", function () {
                             $("highlight-chat")
                                 .append(
                                     "<div class='hl-c-cont fadeout'><div class='hl-name'>" +
+                                        chatBadges +
                                         chatName +
                                         "</div>" +
                                         "<div class='donation-wrapper'>" +

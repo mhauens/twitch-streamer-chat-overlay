@@ -24,4 +24,4 @@ You should see a confirm box -> click "OK".
 ![confirm](confirm.jpg)
 
 ## Credits
-Thank https://github.com/aaronpk/youtube-chat-overlay for the Idea. :-)
+Thanks to https://github.com/aaronpk/youtube-chat-overlay for the Idea. :-)
