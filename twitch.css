@@ -5,6 +5,8 @@
     --name-background: #ffa500;
     --donation-header-background: #444;
     --message-text-color: #fff;
+    --message-background-color: var(--prevent-key-out-black);
+    --name-background-color: var(--prevent-key-out-black);
 
     /* FONT */
     --name-font: Avenir Next;
@@ -76,6 +78,28 @@ div[data-a-target="chat-line-message"] {
     border-radius: 4px;
 }
 
+.animations {
+    z-index: 99999;
+    position: absolute;
+    bottom: 12px;
+    right: 150px;
+}
+
+.animations.animations-title {
+    padding-right: 8px;
+}
+
+.btn-animation {
+    background-color: #333;
+    padding: 4px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.btn-animation.active {
+    background-color: #ffa500;
+}
+
 highlight-chat {
     box-sizing: border-box;
     display: block;
@@ -87,7 +111,7 @@ highlight-chat {
     z-index: 99999999999;
     overflow: hidden;
     margin: 0px;
-    padding: 40px 50px 40px 220px;
+    padding: 40px 50px 40px 100px;
     background-color: var(--key-out-black);
     color: var(--message-text-color);
     font-size: 30px;
@@ -101,8 +125,20 @@ highlight-chat {
     transition: 0.5s all cubic-bezier(0.25, 0.25, 0.105, 1.2);
 }
 
-.hl-c-cont.fadeout {
+.hl-c-cont.top {
+    transform: translateY(-600px);
+}
+
+.hl-c-cont.bottom {
     transform: translateY(600px);
+}
+
+.hl-c-cont.left {
+    transform: translateX(-1600px);
+}
+
+.hl-c-cont.right {
+    transform: translateX(1600px);
 }
 
 .hl-c-cont img.chat-image.chat-line__message--emote.tw-inline-block {
@@ -118,7 +154,7 @@ highlight-chat {
     top: -19px;
     left: 40px;
     background: var(--name-background);
-    color: var(--prevent-key-out-black);
+    color: var(--name-background-color);
     padding: 10px;
     border-radius: var(--message-name-border-radius);
     transform: rotate(-0deg);
@@ -135,7 +171,7 @@ highlight-chat {
     padding: 30px 30px 20px 50px;
     border-radius: var(--message-box-border-radius);
     overflow: hidden;
-    background-color: var(--prevent-key-out-black);
+    background-color: var(--message-background-color);
 }
 
 .donation-wrapper {

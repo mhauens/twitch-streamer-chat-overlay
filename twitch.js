@@ -8,6 +8,8 @@ window.addEventListener("load", function () {
         console.log("TWITCH SCRIPT: Looking for Pagename...");
         console.log("TWITCH SCRIPT: Found Pagename: ", pageLoadedName);
 
+        var animation = "bottom";
+
         if (
             pageLoadedName === "ChannelPage" ||
             pageLoadedName === "ChannelWatchPage"
@@ -45,7 +47,15 @@ window.addEventListener("load", function () {
                     .remove();
 
                 $("#root").before(
-                    '<highlight-chat></highlight-chat><button class="btn-clear">CLEAR</button>'
+                    "<highlight-chat></highlight-chat>" +
+                        "<button class='btn-clear'>CLEAR</button>" +
+                        "<div class='animations'>" +
+                        "<span class='animations-title'>Animation: </span>" +
+                        "<button class='btn-animation top'>Top</button>" +
+                        "<button class='btn-animation bottom active'>Bottom</button>" +
+                        "<button class='btn-animation left'>Left</button>" +
+                        "<button class='btn-animation right'>Right</button>" +
+                        "</div>"
                 );
 
                 $("body")
@@ -138,9 +148,13 @@ window.addEventListener("load", function () {
                                 chatMessage.length
                             );
 
+                            console.log("animation set: ", animation);
+
                             $("highlight-chat")
                                 .append(
-                                    "<div class='hl-c-cont fadeout'><div class='hl-name'>" +
+                                    "<div class='hl-c-cont " +
+                                        animation +
+                                        "'><div class='hl-name'>" +
                                         chatBadges +
                                         chatName +
                                         "</div>" +
@@ -155,19 +169,55 @@ window.addEventListener("load", function () {
                                 )
                                 .delay(20)
                                 .queue(function (next) {
-                                    $(".hl-c-cont").removeClass("fadeout");
+                                    $(".hl-c-cont").removeClass(animation);
                                     next();
                                 });
                         }
                     );
 
                 $("body").on("click", ".btn-clear", function () {
+                    console.log("animation clear: ", animation);
                     $(".hl-c-cont")
-                        .addClass("fadeout")
+                        .addClass(animation)
                         .delay(10)
                         .queue(function () {
                             $(".hl-c-cont").remove().dequeue();
                         });
+                });
+
+                function resetAnimationButtons() {
+                    var animationButtons = $("body").find(".btn-animation");
+                    console.log("animationButtons", animationButtons);
+
+                    animationButtons.each(function (i) {
+                        if ($(this).hasClass("active")) {
+                            $(this).removeClass("active");
+                        }
+                    });
+                }
+
+                $("body").on("click", ".btn-animation.top", function () {
+                    resetAnimationButtons();
+                    animation = "top";
+                    $(this).addClass("active");
+                });
+
+                $("body").on("click", ".btn-animation.bottom", function () {
+                    resetAnimationButtons();
+                    animation = "bottom";
+                    $(this).addClass("active");
+                });
+
+                $("body").on("click", ".btn-animation.left", function () {
+                    resetAnimationButtons();
+                    animation = "left";
+                    $(this).addClass("active");
+                });
+
+                $("body").on("click", ".btn-animation.right", function () {
+                    resetAnimationButtons();
+                    animation = "right";
+                    $(this).addClass("active");
                 });
 
                 function getPosition(string, subString, index) {
