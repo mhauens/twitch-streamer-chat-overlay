@@ -68,7 +68,10 @@ window.addEventListener("load", function () {
                                 .find('img[alt~="cheer"]')
                                 .attr("src");
 
-                            console.log("donationLogo ", donationLogo);
+                            console.log(
+                                "TWITCH SCRIPT: donationLogo ",
+                                donationLogo
+                            );
 
                             chatMessageDomElem
                                 .find('img[alt~="cheer"]')
@@ -83,13 +86,16 @@ window.addEventListener("load", function () {
                                 .remove();
 
                             var donationBadge = "";
+                            var donationHeader = "";
                             if (chatDonationAmount) {
                                 donationBadge =
-                                    '<div class="donation"><div class="donation-inner"><img src="' +
+                                    "<div class='donation-badge'><img src='" +
                                     donationLogo +
-                                    '" />' +
+                                    "' />" +
                                     chatDonationAmount +
-                                    "</div></div>";
+                                    "</div>";
+                                donationHeader =
+                                    "<div class='donation-header'></div>";
                             }
 
                             chatMessageDomElem
@@ -117,12 +123,15 @@ window.addEventListener("load", function () {
 
                             $("highlight-chat")
                                 .append(
-                                    '<div class="hl-c-cont fadeout"><div class="hl-name">' +
+                                    "<div class='hl-c-cont fadeout'><div class='hl-name'>" +
                                         chatName +
                                         "</div>" +
-                                        '<div class="hl-message">' +
-                                        chatMessage +
+                                        "<div class='donation-wrapper'>" +
                                         donationBadge +
+                                        "<div class='hl-message'>" +
+                                        donationHeader +
+                                        chatMessage +
+                                        "</div>" +
                                         "</div>" +
                                         "</div>"
                                 )

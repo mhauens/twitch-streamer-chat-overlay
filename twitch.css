@@ -1,3 +1,35 @@
+:root {
+    /* COLORS */
+    --key-out-black: #000; /* black background for Luma key. Will be transparent */
+    --prevent-key-out-black: #222; /* needs to be slightly above black to not get keyed out */
+    --name-background: #ffa500;
+    --donation-header-background: #444;
+    --message-text-color: #fff;
+
+    /* FONT */
+    --name-font: Avenir Next;
+    --name-font-size: 30px;
+    --name-font-weight: 700;
+
+    --message-font: Avenir Next;
+    --message-font-size: 27px;
+    --message-font-weight: 600;
+
+    --message-inline-icon-size: 28px;
+
+    --donation-header-font-size: 18px;
+
+    --donation-badge-font: Avenir Next;
+    --donation-badge-font-size: 20px;
+
+    /* MISC */
+    --donation-header-text: "SUPERCHAT"; /*needs to be in quotes*/
+    --message-box-border-radius: 10px 10px 0 0; /* order: top-left top-right bottom-right bottom-left */
+    --message-name-border-radius: 6px;
+    --message-min-height: 107px;
+    --message-min-width: 500px;
+}
+
 .channel-root__right-column.channel-root__right-column--expanded.tw-border-l.tw-c-background-base.tw-flex.tw-flex-column.tw-flex-grow-0.tw-flex-nowrap.tw-flex-shrink-0.tw-full-height.tw-z-above.channel-root__right-column--modified {
     width: 100vw;
     position: unset;
@@ -19,7 +51,7 @@
 
 .mention-fragment,
 .mention-fragment.mention-fragment--recipient {
-    background-color: #222;
+    background-color: var(--prevent-key-out-black);
 }
 
 div[data-a-target="chat-line-message"] {
@@ -27,8 +59,9 @@ div[data-a-target="chat-line-message"] {
 }
 
 .msg-shown {
+    /* Mark messages in the chat section */
     background-color: #ffa500;
-    color: #080808;
+    color: var(--key-out-black);
 }
 
 .btn-clear {
@@ -43,39 +76,7 @@ div[data-a-target="chat-line-message"] {
     border-radius: 4px;
 }
 
-.donation-inner {
-    position: absolute;
-    left: -25px;
-    bottom: -25px;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    align-items: center;
-}
-
-.donation-inner img {
-    height: 50px;
-    width: 50px;
-}
-
-.donation::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 18px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.23);
-    border-radius: 10px 10px 0 0;
-    padding: 5px 0 0;
-    display: block;
-    content: "SUPERCHAT";
-    color: #fff;
-}
-
 highlight-chat {
-    font-family: Avenir Next;
-    font-weight: 600;
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -87,8 +88,8 @@ highlight-chat {
     overflow: hidden;
     margin: 0px;
     padding: 40px 50px 40px 220px;
-    background-color: #000; /* black background for Luma key */
-    color: #fff;
+    background-color: var(--key-out-black);
+    color: var(--message-text-color);
     font-size: 30px;
 }
 
@@ -104,24 +105,74 @@ highlight-chat {
     transform: translateY(600px);
 }
 
+.hl-c-cont img.chat-image.chat-line__message--emote.tw-inline-block {
+    /*size of icons in the message*/
+    height: var(--message-inline-icon-size);
+}
+
 .hl-name {
+    font-family: var(--name-font);
+    font-size: var(--name-font-size);
+    font-weight: var(--name-font-weight);
     position: absolute;
-    top: -20px;
-    left: 50px;
-    font-weight: 700;
-    background: #ffa500;
-    color: #080808; /* needs to be slightly above black to not get keyed out */
+    top: -19px;
+    left: 40px;
+    background: var(--name-background);
+    color: var(--prevent-key-out-black);
     padding: 10px;
+    border-radius: var(--message-name-border-radius);
     transform: rotate(-0deg);
     z-index: 1;
 }
 
 .hl-message {
+    font-family: var(--message-font);
+    font-size: var(--message-font-size);
+    font-weight: var(--message-font-weight);
     position: absolute;
-    min-height: 107px;
-    min-width: 500px;
-    font-size: 45px;
-    font-weight: 600;
-    padding: 20px 40px 20px 70px;
-    background-color: #222; /* needs to be slightly above black to not get keyed out */
+    min-height: var(--message-min-height);
+    min-width: var(--message-min-width);
+    padding: 30px 30px 20px 50px;
+    border-radius: var(--message-box-border-radius);
+    overflow: hidden;
+    background-color: var(--prevent-key-out-black);
+}
+
+.donation-wrapper {
+    position: relative;
+    min-height: var(--message-min-height);
+    min-width: var(--message-min-width);
+}
+
+.donation-badge {
+    font-family: var(--donation-badge-font);
+    font-size: var(--donation-badge-font-size);
+    position: absolute;
+    left: -25px;
+    bottom: -40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.donation-badge img {
+    height: 50px;
+    width: 50px;
+}
+
+.donation-header::before {
+    --donation-header-spaceing: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    font-size: var(--donation-header-font-size);
+    text-align: right;
+    background-color: var(--donation-header-background);
+    display: block;
+    content: var(--donation-header-text);
+    color: var(--message-text-color);
+    padding: 0 var(--donation-header-spaceing);
+    width: calc(100% - (var(--donation-header-spaceing) * 2));
 }
