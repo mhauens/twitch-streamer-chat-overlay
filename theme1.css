@@ -6,10 +6,10 @@
     --donation-header-background: #444;
 
     --name-text-color: var(--prevent-key-out-black);
-    --name-background-color: #ffa500;
+    --name-background-color: #b17d9a;
 
     --message-text-color: #fff;
-    --message-background-color: var(--prevent-key-out-black);
+    --message-background-color: #2095a6;
 
     /* FONT */
     --name-font: Avenir Next;
@@ -20,6 +20,7 @@
     --message-font-size: 27px;
     --message-font-weight: 600;
 
+    --name-inline-icon-size: 28px;
     --message-inline-icon-size: 28px;
 
     --donation-header-font-size: 18px;
@@ -54,8 +55,8 @@
     width: 100vw;
 }
 
-.mention-fragment,
-.mention-fragment.mention-fragment--recipient {
+.hl-message .mention-fragment,
+.hl-message .mention-fragment.mention-fragment--recipient {
     background-color: var(--message-background-color);
 }
 
@@ -154,14 +155,21 @@ highlight-chat {
     font-size: var(--name-font-size);
     font-weight: var(--name-font-weight);
     position: absolute;
-    top: -19px;
-    left: 40px;
+    top: -20px;
+    left: -20px;
     background: var(--name-background-color);
     color: var(--name-text-color);
     padding: 10px;
     border-radius: var(--message-name-border-radius);
     transform: rotate(-0deg);
     z-index: 1;
+    -webkit-box-shadow: 9px 9px 10px 0px rgba(34, 34, 34, 0.7);
+    -moz-box-shadow: 9px 9px 10px 0px rgba(34, 34, 34, 0.7);
+    box-shadow: 9px 9px 10px 0px rgba(34, 34, 34, 0.7);
+}
+
+.hl-name img {
+    height: var(--name-inline-icon-size);
 }
 
 .hl-message {
