@@ -16,6 +16,7 @@ window.addEventListener("load", function () {
         ) {
             if (confirm("Activate chat-overlay?")) {
                 console.log("TWITCH SCRIPT: Confirmed to run script.");
+                $("body").addClass("twitch-overlay");
                 $("body").find(".persistent-player").empty();
                 $("body").find("[data-a-target='video-player']").empty();
 

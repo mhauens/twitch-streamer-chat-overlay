@@ -35,50 +35,55 @@
     --message-min-width: 500px;
 }
 
-.root {
+.twitch-overlay .root {
     height: calc(100% - 400px);
     margin-top: 400px;
 }
 
-.right-column--beside .channel-root__right-column {
+.twitch-overlay .right-column--beside .channel-root__right-column {
     width: calc(100vw - 240px);
 }
 
-.channel-root__right-column.channel-root__right-column--expanded.tw-border-l.tw-c-background-base.tw-flex.tw-flex-column.tw-flex-grow-0.tw-flex-nowrap.tw-flex-shrink-0.tw-full-height.tw-z-above.channel-root__right-column--modified {
+.twitch-overlay
+    .channel-root__right-column.channel-root__right-column--expanded.tw-border-l.tw-c-background-base.tw-flex.tw-flex-column.tw-flex-grow-0.tw-flex-nowrap.tw-flex-shrink-0.tw-full-height.tw-z-above.channel-root__right-column--modified {
     width: 100vw;
     position: unset;
     transform: none;
 }
 
-.tw-flex.tw-flex-column.tw-flex-grow-1.tw-full-height.tw-full-width.tw-overflow-hidden.tw-relative.tw-z-default.twilight-main.hide,
-.side-nav.side-nav--collapsed.tw-c-background-alt.tw-flex-shrink-0.tw-full-height.tw-z-abov.hide,
-.channel-root.channel-root--watch-chat.channel-root--live.channel-root--watch.channel-root--unanimated.hide {
+.twitch-overlay
+    .tw-flex.tw-flex-column.tw-flex-grow-1.tw-full-height.tw-full-width.tw-overflow-hidden.tw-relative.tw-z-default.twilight-main.hide,
+.twitch-overlay
+    .side-nav.side-nav--collapsed.tw-c-background-alt.tw-flex-shrink-0.tw-full-height.tw-z-abov.hide,
+.twitch-overlay
+    .channel-root.channel-root--watch-chat.channel-root--live.channel-root--watch.channel-root--unanimated.hide {
     display: none !important;
 }
 
-.chat-shell.chat-shell__expanded.tw-full-height.chat-shell--modified {
+.twitch-overlay
+    .chat-shell.chat-shell__expanded.tw-full-height.chat-shell--modified {
     height: 55vh !important;
     position: absolute;
     bottom: 0;
     width: 100vw;
 }
 
-.mention-fragment,
-.mention-fragment.mention-fragment--recipient {
+.twitch-overlay .mention-fragment,
+.twitch-overlay .mention-fragment.mention-fragment--recipient {
     background-color: var(--message-background-color);
 }
 
-div[data-a-target="chat-line-message"] {
+.twitch-overlay div[data-a-target="chat-line-message"] {
     cursor: pointer;
 }
 
-.msg-shown {
+.twitch-overlay .msg-shown {
     /* Mark messages in the chat section */
     background-color: #ffa500;
     color: var(--key-out-black);
 }
 
-.btn-clear {
+.twitch-overlay .btn-clear {
     position: absolute;
     z-index: 99999;
     bottom: 35vh;
@@ -90,29 +95,29 @@ div[data-a-target="chat-line-message"] {
     border-radius: 4px;
 }
 
-.animations {
+.twitch-overlay .animations {
     z-index: 99999;
     position: absolute;
     bottom: 12px;
     right: 150px;
 }
 
-.animations.animations-title {
+.twitch-overlay .animations.animations-title {
     padding-right: 8px;
 }
 
-.btn-animation {
+.twitch-overlay .btn-animation {
     background-color: #333;
     padding: 4px;
     border-radius: 4px;
     margin-right: 8px;
 }
 
-.btn-animation.active {
+.twitch-overlay .btn-animation.active {
     background-color: #ffa500;
 }
 
-highlight-chat {
+.twitch-overlay highlight-chat {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -129,7 +134,7 @@ highlight-chat {
     font-size: 30px;
 }
 
-.hl-c-cont {
+.twitch-overlay .hl-c-cont {
     position: relative;
     padding: 20px;
     width: 100%;
@@ -137,28 +142,30 @@ highlight-chat {
     transition: 0.5s all cubic-bezier(0.25, 0.25, 0.105, 1.2);
 }
 
-.hl-c-cont.top {
+.twitch-overlay .hl-c-cont.top {
     transform: translateY(-600px);
 }
 
-.hl-c-cont.bottom {
+.twitch-overlay .hl-c-cont.bottom {
     transform: translateY(600px);
 }
 
-.hl-c-cont.left {
+.twitch-overlay .hl-c-cont.left {
     transform: translateX(-1600px);
 }
 
-.hl-c-cont.right {
+.twitch-overlay .hl-c-cont.right {
     transform: translateX(1600px);
 }
 
-.hl-c-cont img.chat-image.chat-line__message--emote.tw-inline-block {
+.twitch-overlay
+    .hl-c-cont
+    img.chat-image.chat-line__message--emote.tw-inline-block {
     /*size of icons in the message*/
     height: var(--message-inline-icon-size);
 }
 
-.hl-name {
+.twitch-overlay .hl-name {
     font-family: var(--name-font);
     font-size: var(--name-font-size);
     font-weight: var(--name-font-weight);
@@ -173,7 +180,7 @@ highlight-chat {
     z-index: 1;
 }
 
-.hl-message {
+.twitch-overlay .hl-message {
     font-family: var(--message-font);
     font-size: var(--message-font-size);
     font-weight: var(--message-font-weight);
@@ -186,13 +193,13 @@ highlight-chat {
     background-color: var(--message-background-color);
 }
 
-.donation-wrapper {
+.twitch-overlay .donation-wrapper {
     position: relative;
     min-height: var(--message-min-height);
     min-width: var(--message-min-width);
 }
 
-.donation-badge {
+.twitch-overlay .donation-badge {
     font-family: var(--donation-badge-font);
     font-size: var(--donation-badge-font-size);
     position: absolute;
@@ -204,12 +211,12 @@ highlight-chat {
     z-index: 10;
 }
 
-.donation-badge img {
+.twitch-overlay .donation-badge img {
     height: 50px;
     width: 50px;
 }
 
-.donation-header::before {
+.twitch-overlay .donation-header::before {
     --donation-header-spaceing: 8px;
     position: absolute;
     top: 0;
