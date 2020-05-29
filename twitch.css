@@ -35,6 +35,15 @@
     --message-min-width: 500px;
 }
 
+.root {
+    height: calc(100% - 400px);
+    margin-top: 400px;
+}
+
+.right-column--beside .channel-root__right-column {
+    width: calc(100vw - 240px);
+}
+
 .channel-root__right-column.channel-root__right-column--expanded.tw-border-l.tw-c-background-base.tw-flex.tw-flex-column.tw-flex-grow-0.tw-flex-nowrap.tw-flex-shrink-0.tw-full-height.tw-z-above.channel-root__right-column--modified {
     width: 100vw;
     position: unset;
